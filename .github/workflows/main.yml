@@ -303,6 +303,9 @@ jobs:
             CROSS_COMPILE=aarch64-linux-android- \
             CROSS_COMPILE_ARM32=arm-linux-androideabi- \
             LD=ld.lld
+          if [ ! -f out/arch/arm64/boot/Image.gz ]; then
+            gzip -c out/arch/arm64/boot/Image > out/arch/arm64/boot/Image.gz
+          fi
           ls -la out/arch/arm64/boot/Image.gz
 
       - name: Package AnyKernel3 zip
